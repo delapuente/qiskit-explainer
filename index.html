@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Qiskit Explainer</title>
-  <script defer src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600&display=swap');
 
@@ -12,8 +11,6 @@
       font-family: 'IBM Plex Sans', sans-serif;
       background-color: #f4f4f4;
       color: #262626;
-
-      --terra-color: #3e1a00;
     }
 
     body {
@@ -51,38 +48,44 @@
 
     .scene {
       height: 100vh;
-      background-size: contain;
+      background-size: auto 120%;
       background-repeat: no-repeat;
-      background-position: center;
+      background-position: 210% center;
       background-image:
-        linear-gradient(0, rgba(244,244,244,1) 0%, rgba(244,244,244,1) 100%),
-        var(--background-image);
-      outline: 1px solid gray;
+        linear-gradient(0, rgba(244,244,244,0.95) 0%, rgba(244,244,244,0.95) 100%),
+        var(--background-image, none);
+      background-color: #f4f4f4;
     }
 
     .summary {
-      --background-image: url("./system-one.png");
-      background-size: cover;
+      margin-bottom: 1300px;
+    }
+
+    .summary .card {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 200ms;
+    }
+
+    .summary .card.visible {
+      opacity: 1;
+      transform: none;
     }
 
     .terra {
       --background-image: url("./qiskit-terra-logo.svg");
-      background-color: var(--terra-color);
     }
 
     .aer {
       --background-image: url("./qiskit-aer-logo.svg");
-      background-color: #012749;
     }
 
     .aqua {
       --background-image: url("./qiskit-aqua-logo.svg");
-      background-color: #022b30;
     }
 
     .ignis {
       --background-image: url("./qiskit-ignis-logo.svg");
-      background-color: #520408;
     }
 
     h1 {
@@ -98,7 +101,7 @@
       font-weight: 300;
       letter-spacing: 0;
 
-      padding-top: 4rem;
+      padding-top: 2rem;
       margin: 0;
     }
 
@@ -121,7 +124,7 @@
       margin: 5rem 0 0 0;
     }
 
-    .element-summary {
+    .card {
       padding: 1rem;
       background-color: #fff;
       color: #161616;
@@ -134,11 +137,11 @@
       --element-color: var(--terra-color);
     }
 
-    .element-summary .element-icon {
-      width: 25%;
+    .card .element-icon {
+      width: 150px;
     }
 
-    .element-summary h3 {
+    .card h3 {
       font-size: 1.25rem;
       line-height: 1.625rem;
       font-weight: 400;
@@ -146,7 +149,7 @@
       margin: 1rem 0 0 0;
     }
 
-    .element-summary p {
+    .card p {
       font-size: 1rem;
       line-height: 1.375rem;
       font-weight: 400;
@@ -154,16 +157,16 @@
       margin: 1rem 0 0 0;
     }
 
-    .element-organization {
+    .elements-organization {
       list-style: none;
       padding-left: 0;
       display: grid;
       grid-template:
-        "h h e e o o"
+        "a a a i i i"
         "t t t t t t"
-        "a a a i i i";
+        "h h e e o o";
       gap: 2rem;
-      margin: 5rem 0 0 0;
+      margin: 3rem 0 0 0;
     }
 
     .organization-terra {
@@ -189,14 +192,30 @@
     .organization-3rd-parties {
       grid-area: o;
     }
+
+    .terra-organization {
+      padding-left: 0;
+      margin-top: 5rem;
+      list-style: none;
+      display: grid;
+      grid-template:
+        "ti to tp tr"
+        ".. .. .. hh"
+        "ii oo pp .."
+        ".. .. .. ss"
+        "tv tv tv tv"
+        "vi vo .. vr";
+    }
+
+    .terra-organization .card {
+      background-color: transparent;
+      border: none;
+    }
+
+    .terra-organization img {
+      height: 8vh;
+    }
   </style>
-  <script>
-    const controller = new ScrollMagic.Controller();
-    const qiskitSummary = new ScrollMagic.Scene({
-      offset: 0,
-      duration: 400,
-    })
-  </script>
 </head>
 <body>
   <main>
@@ -217,76 +236,16 @@
             Qiskit
           </h1>
           <p>
-            Qiskit is an open-source suite of libraries, tools and software for
+            Qiskit is an open-source suite of Python libraries and protocols for
             leveraging today's quantum devices in research, education, and
             business.
+          </p>
+          <p>
+            <a href="#">Get started!</a>
           </p>
         </header>
       </div>
     </header>
-    <article class="scene terra">
-      <div class="wrapper">
-        <header>
-          <h2>
-            Qiskit Elements
-          </h2>
-          <p>
-            From fine-grained pulse control to high-level optimization
-            algorithms, ranging through circuit optimization, noise simulation,
-            hardware characterization, noise mitigation, and near-tem quantum
-            computation, the Qiskit ecosystem covers all aspects of modern
-            quantum research&nbsp;+&nbsp;development.
-          </p>
-        </header>
-        <ul class="element-organization">
-          <li class="element-summary organization-ibm-hardware">
-            <img src="./qiskit-aer-logo.svg" class="element-icon"></img>
-            <p>
-              IBM Hardware
-            </p>
-          </li>
-          <li class="element-summary organization-aer">
-            <img src="./qiskit-aer-logo.svg" class="element-icon"></img>
-            <p>
-              Aer
-            </p>
-          </li>
-          <li class="element-summary organization-3rd-parties">
-            <img src="./qiskit-aer-logo.svg" class="element-icon"></img>
-            <p>
-              3rd Parties Hardware
-            </p>
-          </li>
-          <li class="element-summary organization-terra">
-            <img src="./qiskit-terra-logo.svg" class="element-icon"></img>
-            <p>
-              Terra
-            </p>
-          </li>
-          <li class="element-summary organization-aqua">
-            <img src="./qiskit-aqua-logo.svg" class="element-icon"></img>
-            <p>
-              Aqua
-            </p>
-          </li>
-          <li class="element-summary organization-ignis">
-            <img src="./qiskit-ignis-logo.svg" class="element-icon"></img>
-            <p>
-              Ignis
-            </p>
-          </li>
-        </ul>
-      </div>
-    </article>
-    <article class="scene aer">
-      <div class="wrapper"></div>
-    </article>
-    <article class="scene aqua">
-      <div class="wrapper"></div>
-    </article>
-    <article class="scene ignis">
-      <div class="wrapper"></div>
-    </article>
     <article class="scene summary">
       <div class="wrapper">
         <header>
@@ -295,74 +254,193 @@
           </h2>
           <p>
             From fine-grained pulse control to high-level optimization
-            algorithms, ranging through circuit optimization, noise simulation,
-            hardware characterization, noise mitigation, and near-tem quantum
-            computation, the Qiskit ecosystem covers all aspects of modern
-            quantum research&nbsp;+&nbsp;development.
+            algorithms, ranging through circuit optimization, noise simulation
+            and mitigation, hardware characterization, and more the Qiskit
+            ecosystem covers all aspects of modern quantum
+            research&nbsp;+&nbsp;development.
           </p>
         </header>
-        <ul class="element-list">
-          <li class="element-summary">
+        <ul class="elements-organization">
+          <li class="card organization-terra">
             <img src="./qiskit-terra-logo.svg" class="element-icon"></img>
-            <div class="element-short-explainer">
-              <h3>
-                Terra
-              </h3>
-              <p>
-                Within Terra is a set of tools for composing quantum programs
-                at the level of circuits and pulses, optimizing them for the
-                constraints of a particular quantum device, and managing the
-                batched execution of experiments on remote-access devices.
-              </p>
-            </div>
+            <p>
+              Terra
+            </p>
           </li>
-          <li class="element-summary">
-            <img src="./qiskit-aqua-logo.svg" class="element-icon"></img>
-            <div class="element-short-explainer">
-              <h3>
-                Aqua
-              </h3>
-              <p>
-                Qiskit Aqua contains a library of cross-domain quantum
-                algorithms upon which applications for near-term quantum
-                computing can be built. It currently allows the user to
-                experiment on chemistry, AI, optimization and finance
-                applications for near-term quantum computers.
-              </p>
-            </div>
-          </li>
-          <li class="element-summary">
+          <li class="card organization-aer">
             <img src="./qiskit-aer-logo.svg" class="element-icon"></img>
-            <div class="element-short-explainer">
-              <h3>
-                Aer
-              </h3>
-              <p>
-                Qiskit Aer provides a high performance simulator framework. It
-                contains optimized simulator backends for executing circuits
-                compiled in Qiskit Terra, and tools for constructing highly
-                configurable noise models enabling realistic noisy simulations
-                of real devices.
-              </p>
-            </div>
+            <p>
+              Aer
+            </p>
           </li>
-          <li class="element-summary">
+          <li class="card organization-ibm-hardware">
+            <img src="./qiskit-ibmqp-logo.svg" class="element-icon"></img>
+            <p>
+              IBM Hardware
+            </p>
+          </li>
+          <li class="card organization-3rd-parties">
+            <img src="./chip.svg" class="element-icon"></img>
+            <p>
+              3rd Parties Hardware
+            </p>
+          </li>
+          <li class="card organization-aqua">
+            <img src="./qiskit-aqua-logo.svg" class="element-icon"></img>
+            <p>
+              Aqua
+            </p>
+          </li>
+          <li class="card organization-ignis">
             <img src="./qiskit-ignis-logo.svg" class="element-icon"></img>
-            <div class="element-short-explainer">
-              <h3>
-                Ignis
-              </h3>
-              <p>
-                Qiskit Ignis is a collection of experiments for understanding
-                and mitigating noise in quantum circuits and systems. The
-                experiments provided in Ignis are grouped into the topics of
-                characterization, verification and mitigation.
-              </p>
-            </div>
+            <p>
+              Ignis
+            </p>
           </li>
         </ul>
       </div>
     </article>
+    <article class="scene terra">
+      <div class="wrapper">
+        <header>
+          <h2>
+            Qiskit Terra
+          </h2>
+          <p>
+            Compose, optimize, visualize and run quantum experiments in real
+            and simulated hardware. Qiskit Terra is self-contained and includes
+            everything you need to start doing quantum computing today.
+          </p>
+        </header>
+        <ul class="terra-organization">
+          <li class="card" style="grid-area: ti;">
+            <h3>
+              Input
+            </h3>
+          </li>
+          <li class="card" style="grid-area: ii;">
+            <img src="./document.svg" alt="User input">
+          </li>
+          <li class="card" style="grid-area: to;">
+            <h3>
+              Optimization
+            </h3>
+          </li>
+          <li class="card" style="grid-area: oo;">
+            <img src="./settings.svg" alt="Optimization">
+          </li>
+          <li class="card" style="grid-area: tp">
+            <h3>
+              Open protocols
+            </h3>
+          </li>
+          <li class="card" style="grid-area: pp">
+            <img src="./code.svg" alt="Open protocols">
+          </li>
+          <li class="card" style="grid-area: tr">
+            <h3>
+              Execution
+            </h3>
+          </li>
+          <li class="card" style="grid-area: hh">
+            <img src="./chip.svg" alt="Hardware execution">
+          </li>
+          <li class="card" style="grid-area: ss;">
+            <img src="./laptop.svg" alt="Simulation execution">
+          </li>
+          <li class="card organization-visualizations" style="grid-area: tv">
+            <h3>
+              Visualization
+            </h3>
+          </li>
+          <li class="card organization-visualizations" style="grid-area: vi">
+            <img src="./flow--data.svg" alt="Circuit visualization">
+            <img src="./draw.svg" alt="Pulse visualization" style="transform: rotateZ(-45deg);">
+          </li>
+          <li class="card organization-visualizations" style="grid-area: vo">
+            <img src="./flow.svg" alt="Directed acyclic graph visualization">
+          </li>
+          <li class="card organization-visualizations" style="grid-area: vr">
+            <img src="./chart--bar.svg" alt="Results visualization">
+          </li>
+        </ul>
+      </div>
+    </article>
+    <article class="scene aer">
+      <div class="wrapper">
+        <header>
+          <h2>
+            Qiskit Aer
+          </h2>
+          <p>
+            Aer provides high performance simulator backends for executing
+            circuits compiled in Qiskit Terra, and tools for constructing highly
+            configurable noise models for performing realistic noisy
+            simulations.
+          </p>
+        </header>
+        <canvas></canvas>
+      </div>
+    </article>
+    <article class="scene aqua">
+      <div class="wrapper">
+        <header>
+          <h2>
+            Qiskit Aqua
+          </h2>
+          <p>
+            Built on top of Qiskit Terra, Aqua increases the level of
+            abstraction by providing a rich collection of algorithsm upon which
+            applications for near-term quantum computing can be built.
+          </p>
+        </header>
+        <canvas></canvas>
+      </div>
+    </article>
+    <article class="scene ignis">
+      <div class="wrapper">
+        <header>
+          <h2>
+            Qiskit Ignis
+          </h2>
+          <p>
+            Qiskit Ignis is a collection of experiments for understanding and
+            mitigating noise in quantum circuits and systems. The experiments
+            provided in Ignis are grouped into the topics of characterization,
+            verification and mitigation.
+          </p>
+        </header>
+      </div>
+    </article>
   </main>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.js"></script>
+  <script>
+    const controller = new ScrollMagic.Controller({
+      addIndicators: true,
+    });
+    const scenes = document.querySelectorAll('.scene');
+    scenes.forEach(scene => {
+      const qiskitSummary = new ScrollMagic.Scene({
+        triggerHook: 'onLeave',
+        triggerElement: scene,
+        pushFollowers: false,
+        duration: 0
+      })
+      .setPin(scene)
+      .addTo(controller);
+    });
+
+    const cards = document.querySelectorAll('.summary .card');
+    cards.forEach(card => {
+      const qiskitSummary = new ScrollMagic.Scene({
+        triggerHook: 0,
+        offset: card.getBoundingClientRect().top + window.scrollY - 50,
+        reverse: false
+      })
+      .setClassToggle(card, 'visible')
+      .addTo(controller);
+    });
+  </script>
 </body>
 </html>
