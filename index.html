@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qiskit Explainer</title>
+  <script defer src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600&display=swap');
+
+    html {
+      font-family: 'IBM Plex Sans', sans-serif;
+      background-color: #f4f4f4;
+      color: #262626;
+
+      --terra-color: #3e1a00;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .wrapper {
+      margin: 0 auto;
+      max-width: 1056px;
+      height: 100%;
+    }
+
+    .landing-page-navigation {
+      border-bottom: 1px solid #161616;
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1rem 0;
+    }
+
+    .landing-page-navigation li {
+      font-size: 0.875rem;
+      line-height: 1.125rem;
+      font-weight: 400;
+      letter-spacing: 0.1rem;
+      display: inline;
+      padding: 0 1rem;
+    }
+
+    .landing-page-header {
+      height: 50vh;
+    }
+
+    .scene {
+      height: 100vh;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image:
+        linear-gradient(0, rgba(244,244,244,1) 0%, rgba(244,244,244,1) 100%),
+        var(--background-image);
+      outline: 1px solid gray;
+    }
+
+    .summary {
+      --background-image: url("./system-one.png");
+      background-size: cover;
+    }
+
+    .terra {
+      --background-image: url("./qiskit-terra-logo.svg");
+      background-color: var(--terra-color);
+    }
+
+    .aer {
+      --background-image: url("./qiskit-aer-logo.svg");
+      background-color: #012749;
+    }
+
+    .aqua {
+      --background-image: url("./qiskit-aqua-logo.svg");
+      background-color: #022b30;
+    }
+
+    .ignis {
+      --background-image: url("./qiskit-ignis-logo.svg");
+      background-color: #520408;
+    }
+
+    h1 {
+      font-size: 2.625rem;
+      line-height: 3.125rem;
+      font-weight: 600;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      font-size: 2.625rem;
+      line-height: 3.125rem;
+      font-weight: 300;
+      letter-spacing: 0;
+
+      padding-top: 4rem;
+      margin: 0;
+    }
+
+    p {
+      font-size: 1.75rem;
+      line-height: 2.25rem;
+      font-weight: 300;
+      letter-spacing: 0;
+      margin: 2rem 0 0;
+    }
+
+    .element-list {
+      list-style: none;
+      padding-left: 0;
+      display: grid;
+      grid-template:
+        "a b"
+        "c d";
+      gap: 2rem;
+      margin: 5rem 0 0 0;
+    }
+
+    .element-summary {
+      padding: 1rem;
+      background-color: #fff;
+      color: #161616;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      border-top: 1px solid #e0e0e0;
+
+      --element-color: var(--terra-color);
+    }
+
+    .element-summary .element-icon {
+      width: 25%;
+    }
+
+    .element-summary h3 {
+      font-size: 1.25rem;
+      line-height: 1.625rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      margin: 1rem 0 0 0;
+    }
+
+    .element-summary p {
+      font-size: 1rem;
+      line-height: 1.375rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      margin: 1rem 0 0 0;
+    }
+
+    .element-organization {
+      list-style: none;
+      padding-left: 0;
+      display: grid;
+      grid-template:
+        "h h e e o o"
+        "t t t t t t"
+        "a a a i i i";
+      gap: 2rem;
+      margin: 5rem 0 0 0;
+    }
+
+    .organization-terra {
+      grid-area: t;
+    }
+
+    .organization-aqua {
+      grid-area: a;
+    }
+
+    .organization-ignis {
+      grid-area: i;
+    }
+
+    .organization-aer {
+      grid-area: e;
+    }
+
+    .organization-ibm-hardware {
+      grid-area: h;
+    }
+
+    .organization-3rd-parties {
+      grid-area: o;
+    }
+  </style>
+  <script>
+    const controller = new ScrollMagic.Controller();
+    const qiskitSummary = new ScrollMagic.Scene({
+      offset: 0,
+      duration: 400,
+    })
+  </script>
+</head>
+<body>
+  <main>
+    <nav class="landing-page-navigation">
+      <div class="wrapper">
+        <li>Elements</li>
+        <li>Blog</li>
+        <li>Events</li>
+        <li>Communities</li>
+        <li>Docs</li>
+        <li>GitHub</li>
+      </div>
+    </nav>
+    <header class="landing-page-header">
+      <div class="wrapper">
+        <header>
+          <h1>
+            Qiskit
+          </h1>
+          <p>
+            Qiskit is an open-source suite of libraries, tools and software for
+            leveraging today's quantum devices in research, education, and
+            business.
+          </p>
+        </header>
+      </div>
+    </header>
+    <article class="scene terra">
+      <div class="wrapper">
+        <header>
+          <h2>
+            Qiskit Elements
+          </h2>
+          <p>
+            From fine-grained pulse control to high-level optimization
+            algorithms, ranging through circuit optimization, noise simulation,
+            hardware characterization, noise mitigation, and near-tem quantum
+            computation, the Qiskit ecosystem covers all aspects of modern
+            quantum research&nbsp;+&nbsp;development.
+          </p>
+        </header>
+        <ul class="element-organization">
+          <li class="element-summary organization-ibm-hardware">
+            <img src="./qiskit-aer-logo.svg" class="element-icon"></img>
+            <p>
+              IBM Hardware
+            </p>
+          </li>
+          <li class="element-summary organization-aer">
+            <img src="./qiskit-aer-logo.svg" class="element-icon"></img>
+            <p>
+              Aer
+            </p>
+          </li>
+          <li class="element-summary organization-3rd-parties">
+            <img src="./qiskit-aer-logo.svg" class="element-icon"></img>
+            <p>
+              3rd Parties Hardware
+            </p>
+          </li>
+          <li class="element-summary organization-terra">
+            <img src="./qiskit-terra-logo.svg" class="element-icon"></img>
+            <p>
+              Terra
+            </p>
+          </li>
+          <li class="element-summary organization-aqua">
+            <img src="./qiskit-aqua-logo.svg" class="element-icon"></img>
+            <p>
+              Aqua
+            </p>
+          </li>
+          <li class="element-summary organization-ignis">
+            <img src="./qiskit-ignis-logo.svg" class="element-icon"></img>
+            <p>
+              Ignis
+            </p>
+          </li>
+        </ul>
+      </div>
+    </article>
+    <article class="scene aer">
+      <div class="wrapper"></div>
+    </article>
+    <article class="scene aqua">
+      <div class="wrapper"></div>
+    </article>
+    <article class="scene ignis">
+      <div class="wrapper"></div>
+    </article>
+    <article class="scene summary">
+      <div class="wrapper">
+        <header>
+          <h2>
+            Qiskit Elements
+          </h2>
+          <p>
+            From fine-grained pulse control to high-level optimization
+            algorithms, ranging through circuit optimization, noise simulation,
+            hardware characterization, noise mitigation, and near-tem quantum
+            computation, the Qiskit ecosystem covers all aspects of modern
+            quantum research&nbsp;+&nbsp;development.
+          </p>
+        </header>
+        <ul class="element-list">
+          <li class="element-summary">
+            <img src="./qiskit-terra-logo.svg" class="element-icon"></img>
+            <div class="element-short-explainer">
+              <h3>
+                Terra
+              </h3>
+              <p>
+                Within Terra is a set of tools for composing quantum programs
+                at the level of circuits and pulses, optimizing them for the
+                constraints of a particular quantum device, and managing the
+                batched execution of experiments on remote-access devices.
+              </p>
+            </div>
+          </li>
+          <li class="element-summary">
+            <img src="./qiskit-aqua-logo.svg" class="element-icon"></img>
+            <div class="element-short-explainer">
+              <h3>
+                Aqua
+              </h3>
+              <p>
+                Qiskit Aqua contains a library of cross-domain quantum
+                algorithms upon which applications for near-term quantum
+                computing can be built. It currently allows the user to
+                experiment on chemistry, AI, optimization and finance
+                applications for near-term quantum computers.
+              </p>
+            </div>
+          </li>
+          <li class="element-summary">
+            <img src="./qiskit-aer-logo.svg" class="element-icon"></img>
+            <div class="element-short-explainer">
+              <h3>
+                Aer
+              </h3>
+              <p>
+                Qiskit Aer provides a high performance simulator framework. It
+                contains optimized simulator backends for executing circuits
+                compiled in Qiskit Terra, and tools for constructing highly
+                configurable noise models enabling realistic noisy simulations
+                of real devices.
+              </p>
+            </div>
+          </li>
+          <li class="element-summary">
+            <img src="./qiskit-ignis-logo.svg" class="element-icon"></img>
+            <div class="element-short-explainer">
+              <h3>
+                Ignis
+              </h3>
+              <p>
+                Qiskit Ignis is a collection of experiments for understanding
+                and mitigating noise in quantum circuits and systems. The
+                experiments provided in Ignis are grouped into the topics of
+                characterization, verification and mitigation.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </article>
+  </main>
+</body>
+</html>
